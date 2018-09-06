@@ -1,0 +1,8 @@
+Installing truffle-hdwallet-provider on Windows:
+
+If you haven't got python installed along with all the node-gyp dependencies, simply open Powershell or Git Bash with administrator privileges and execute:
+
+npm install --global --production windows-build-tools
+and then to install the package:
+
+npm install --global node-gyp
