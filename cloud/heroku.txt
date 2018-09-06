@@ -3,7 +3,11 @@ https://devcenter.heroku.com/articles/git
 
 $ sudo snap install heroku --classic
 $ heroku
-$ heroku login
+$ heroku login:
+
+paul@lancorscientific.com
+x41TT#3yR
+
 $ heroku apps
 $ heroku create
 
@@ -26,5 +30,10 @@ $ heroku local web
 
 May need to set emails if not recognised automatically:
 
+Spartacus Desktop:
 $ git config --global user.email "paul@lancorscientific.com"
 $ git config --global user.name "Paul Darbyshire"
+
+Linux Virtual Box [Spartacus]:
+$ git config --global user.email "pmdarbyshire2003@yahoo.co.uk"
+$ git config --global user.name "pauldarbyshire"
