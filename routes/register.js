@@ -1,6 +1,5 @@
 const express = require('express');
 var mysql = require('mysql');
-var nodemailer = require('nodemailer');
 
 var config = require('../config/config.js');
 var secure = require('../utils/secure.js');
@@ -10,31 +9,6 @@ const pool = mysql.createPool(config.heroku);
 function getConnection() {
   return pool;
 }
-
-function sendEmail(email) {
-    var transporter = nodemailer.createTransport({
-      service: 'Yahoo',
-      auth: {
-        user: 'ericjones529@yahoo.com',
-        pass: 'x41TT#3yR'
-      }
-    });
-    
-    var mailOptions = {
-      from: 'ericjones529@yahoo.com',
-      to: email,
-      subject: 'Medici Web Portal Registration',
-      text: 'Registration successful!'
-    };
-    
-    transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent: ' + info.response);
-      }
-    });
-  }
 
 const router = express.Router();
 
@@ -58,7 +32,6 @@ router.post('/new_user', function (req, res) {
         res.redirect('/register'); 
     } else {
         console.log("New user registered!");
-        //sendEmail(req.body.email);
         res.redirect('/login'); 
     }
   });
