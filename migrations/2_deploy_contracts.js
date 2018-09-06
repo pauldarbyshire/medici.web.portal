@@ -4,8 +4,8 @@ let Token = artifacts.require('Token');
 module.exports = function (deployer) {
 
     const rate = new web3.BigNumber(5000); // 1 ETH = 5000 MDI
-    const wallet = web3.eth.accounts[1];   // Change to [9] when migrating
-    //const wallet = '0x81515050a553fA19783a83Ce069E6564c05C8854' //web3.eth.accounts[1];   // Change to [9] when migrating
+    //const wallet = web3.eth.accounts[1];   // Change to [9] when migrating
+    const wallet = '0xDD59985Bbe7E5F4FF836C8182Cc87EFD3cFF1341' 
    
     return deployer
         .then(() => {
