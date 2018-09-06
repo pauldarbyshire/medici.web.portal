@@ -1,0 +1,30 @@
+https://devcenter.heroku.com/articles/getting-started-with-nodejs#run-the-app-locally
+https://devcenter.heroku.com/articles/git
+
+$ sudo snap install heroku --classic
+$ heroku
+$ heroku login
+$ heroku apps
+$ heroku create
+
+$ git init
+$ ls -a
+$ git status
+$ heroku git:remote -a fathomless-retreat-72027
+$ git add . [git reset]
+$ git status
+$ git commit -m "push to heroku master"
+$ git push heroku master
+$ heroku open [or goto: https://fathomless-retreat-72027.herokuapp.com/]
+$ heroku logs --tail
+$ heroku addons:create cleardb:ignite
+$ heroku config
+$ heroku ps
+
+To server on localhost:5000
+$ heroku local web
+
+May need to set emails if not recognised automatically:
+
+$ git config --global user.email "paul@lancorscientific.com"
+$ git config --global user.name "Paul Darbyshire"

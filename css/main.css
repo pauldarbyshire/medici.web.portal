@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #0A44B5;
+    height: 100vh;
+}
+  
+.container {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.wtext {
+    color: #fff;
+}
+

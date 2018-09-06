@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Medici Web Portal</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #0A44B5;
+    height: 100vh;
+  }
+  
+  .container {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+  h3 {
+    color: #fff;
+  }
+
+  .ltext {
+    color: #fff;
+    font-size: larger;
+  }
+
+  a:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+  </style>
+</head>
+<body>    
+    <div class="container">
+      <div class="col-sm-4">
+        <h3>Register</h3><br>
+          <form action="/new_user" method="POST">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input required id="firstname" type="firstname" class="form-control input-lg" name="firstname" value="" placeholder="First Name">                                        
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input required id="lastname" type="lastname" class="form-control input-lg" name="lastname" value="" placeholder="Last Name">                                        
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <input required id="email" type="email" class="form-control input-lg" name="email" value="" placeholder="Email">                                        
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
+                <input required id="telephone" type="telephone" class="form-control input-lg" name="telephone" value="" placeholder="Telephone">                                        
+            </div>
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input required id="password" type="password" class="form-control input-lg" name="password" value="" placeholder="Password">                                        
+            </div>
+            <br>
+            <button class="btn btn-primary btn-lg">Submit</button>
+            <a class="ltext" href="/login">&nbsp;Already registered?</a>
+          </form>
+      </div>
+    </div>
+  </body>
+</html>
+
