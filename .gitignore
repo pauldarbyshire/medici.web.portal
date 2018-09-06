@@ -1,2 +1,4 @@
+build
+dump
 node_modules
 .env
