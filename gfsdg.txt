@@ -1,0 +1,2 @@
+INFURA_API_KEY = KbQuP7xkP1ZYNhJkUOXF
+MNEMONIC = "foam blame sustain scene east eagle moon chronic bacon giggle dad economy"
