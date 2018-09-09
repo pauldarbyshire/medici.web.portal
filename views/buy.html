@@ -66,10 +66,140 @@
   <div class="container text-center">
       <div class="col-sm-4">
         <h3 class="wtext">Choose Amount:</h3><br>
-        
+        <button class="btn btn-primary btn-lg" onClick=send();>Buy</button>
       </div>
   </div>  
+<!-- Works with web3.min.js version 0.19.0. This web page does not work with version 1.0.0 and up -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+<script type="text/javascript">
+"use strict";
 
+let eventHandlerPageLoad = function() {
+  // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+  if (typeof web3 !== 'undefined') {
+    // Use Mist/MetaMask's provider
+    window.web3 = new Web3(web3.currentProvider);
+    console.log('Web3 injected...');
+  } else {
+    // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
+    window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    console.log('Web not found! Falling back to localhost:8545');
+  }
+
+  // Immediately execute methods after web page is loaded
+  startApp();
+}
+
+window.addEventListener('load', eventHandlerPageLoad);
+
+// Check if an Ethereum node is available every 5 seconds.
+// I have chosen arbritray 5 seconds.
+function reloadPageWhenNoNetwork(){
+  setInterval(function(){
+    if(!web3.isConnected()){
+      // If an Ethereum node is found, reload web page.
+      eventHandlerPageLoad();
+    }
+  }, 1000);
+}
+
+function startApp() {
+  showNetwork();
+  showAPIVersion();
+  showVersionNode();
+  getAccount();
+  getBalance();
+}
+
+function showNetwork() {
+  console.log('Is connected: ', web3.isConnected());
+
+  web3.version.getNetwork((err, res) => {
+    var output = "";
+
+    if (!err) {
+      if(res > 1000000000000) {
+        output = "Testrpc";
+      } else {
+        switch (res) {
+          case "1":
+            output = "Mainnet";
+            break
+          case "2":
+            output = "Morden";
+            break
+          case "3":
+            output = "Ropsten";
+            break
+          case "4":
+            output = "Rinkeby";
+            break
+          default:
+            output = "Unknown network = "+res;
+        }
+      }
+    } else {
+      output = "Error";
+    }
+    //document.getElementById('network').innerHTML = "[web3.version.getNetwork] Network = " + output + "<br />";
+    console.log("Network: ", output);
+  })
+}
+
+function showAPIVersion() {
+  // No async method available
+  //document.getElementById('api').innerHTML = "[web3.version.api] The ethereum js api version = " + web3.version.api + "<br />";
+  console.log("Ethereum API: " + web3.version.api);
+}
+
+function showVersionNode() {
+  web3.version.getNode((err, res) => {
+    var output = "";
+
+    if (!err) {
+      output = res;
+    } else {
+      output = "Error";
+    }
+    //document.getElementById('node').innerHTML = "[web3.version.getNode] The client/node version = " + output + "<br />";
+    console.log("Client: " + output);
+  })
+}
+
+function getAccount() {
+  console.log('Account: ', web3.eth.accounts[0]);
+}
+
+function getBalance() {
+  web3.eth.getBalance(web3.eth.accounts[0], (err, res) => {
+    if (!err) {
+      console.log('Balance: ', res.toNumber() / 1e18, ' ETH');
+    } else {
+      console.log('Error');
+    }
+  });
+}
+
+function send() {
+
+  const contract = '0x4a395477d18b57da095ac3b13e63bef26a0477e6';
+  var gas = '35000';
+  var gasPrice = '21000000000';
+  var amount = '1';
+
+  // Using default gas & gasPrice
+  var details = {from: web3.eth.accounts[0], to: contract, value: web3.toWei(amount, 'ether')};
+
+  web3.eth.sendTransaction(details, (err, res) => {
+    if (!err) {
+      console.log('Trx: ', res);
+    } else {
+      console.log("Error");
+    }
+  })
+}
+
+</script>
 </body>
 </html>
 
