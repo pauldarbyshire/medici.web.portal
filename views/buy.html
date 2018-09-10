@@ -172,11 +172,11 @@ function checkLogin() {
     if (err != null) console.error("An error occurred: "+err);
     else if (accounts.length == 0) console.log("User is not logged in to MetaMask");
     else console.log("User is logged in to MetaMask");
-});
+  });
 }
 
 function getAccount() {
-  console.log('Account: ', web3.eth.accounts[0]);
+  console.log('Account[0]: ', web3.eth.accounts[0]);
 }
 
 function getBalance() {
