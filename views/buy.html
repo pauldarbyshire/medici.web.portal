@@ -107,6 +107,7 @@ function startApp() {
   showNetwork();
   showAPIVersion();
   showVersionNode();
+  checkLogin();
   getAccount();
   getBalance();
 }
@@ -166,6 +167,14 @@ function showVersionNode() {
   })
 }
 
+function checkLogin() {
+  web3.eth.getAccounts(function(err, accounts){
+    if (err != null) console.error("An error occurred: "+err);
+    else if (accounts.length == 0) console.log("User is not logged in to MetaMask");
+    else console.log("User is logged in to MetaMask");
+});
+}
+
 function getAccount() {
   console.log('Account: ', web3.eth.accounts[0]);
 }
@@ -186,6 +195,8 @@ function send() {
   var gas = '35000';
   var gasPrice = '21000000000';
   var amount = '1';
+
+  console.log('Account: ', web3.eth.accounts[0]);
 
   // Using default gas & gasPrice
   var details = {from: web3.eth.accounts[0], to: contract, value: web3.toWei(amount, 'ether')};
